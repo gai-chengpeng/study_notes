@@ -38,7 +38,7 @@
 show databases;
 ```
 
-<div align="center"> <img width='700px' src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hive-show-database.png"/> </div>
+<div align="center"> <img width='700px' src="../pictures/hive-show-database.png"/> </div>
 
 ### 1.2 使用数据库
 
@@ -161,7 +161,7 @@ CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name     --�
 
 使用 `desc format  emp_external` 命令可以查看表的详细信息如下：
 
-<div align="center"> <img width='700px' src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hive-external-table.png"/> </div>
+<div align="center"> <img width='700px' src="../pictures/hive-external-table.png"/> </div>
 
 ### 2.4 分区表
 
@@ -271,7 +271,7 @@ CREATE TEMPORARY EXTERNAL TABLE  IF NOT EXISTS  emp_co  LIKE emp
 load data local inpath "/usr/file/emp.txt" into table emp;
 ```
 
-其中 emp.txt 的内容如下，你可以直接复制使用，也可以到本仓库的[resources](https://github.com/heibaiying/BigData-Notes/tree/master/resources) 目录下载：
+其中 emp.txt 的内容如下，你可以直接复制使用，也可以到本仓库的[resources](../resources) 目录下载：
 
 ```txt
 7369	SMITH	CLERK	7902	1980-12-17 00:00:00	800.00		20
@@ -292,7 +292,7 @@ load data local inpath "/usr/file/emp.txt" into table emp;
 
 加载后可查询表中数据：
 
-<div align="center"> <img width='700px' src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hive-select-emp.png"/> </div>
+<div align="center"> <img width='700px' src="../pictures/hive-select-emp.png"/> </div>
 
 
 
@@ -449,5 +449,3 @@ SHOW CREATE TABLE ([db_name.]table_name|view_name);
 
 [LanguageManual DDL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL)
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

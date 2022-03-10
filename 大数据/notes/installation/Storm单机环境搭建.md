@@ -9,9 +9,9 @@
 
 按照[官方文档](http://storm.apache.org/releases/1.2.2/Setting-up-a-Storm-cluster.html) 的说明：storm 运行依赖于 Java 7+ 和 Python 2.6.6 +，所以需要预先安装这两个软件。由于这两个软件在多个框架中都有依赖，其安装步骤单独整理至  ：
 
-+ [Linux 环境下 JDK 安装](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Linux下JDK安装.md)
++ [Linux 环境下 JDK 安装](./Linux下JDK安装.md)
 
-+ [Linux 环境下 Python 安装](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Linux下Python安装.md)
++ [Linux 环境下 Python 安装](./Linux下Python安装.md)
 
   
 
@@ -78,7 +78,5 @@ nohup sh storm logviewer &
 
 验证方式二： 访问 8080 端口，查看 Web-UI 界面：
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/storm-web-ui.png"/> </div>
+<div align="center"> <img  src="../../pictures/storm-web-ui.png"/> </div>
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

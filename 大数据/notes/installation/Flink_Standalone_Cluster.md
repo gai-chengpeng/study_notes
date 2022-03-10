@@ -29,7 +29,7 @@ Flink 支持使用多种部署模式来满足不同规模应用的需求，常�
 
 **1. 前置条件**
 
-Flink 的运行依赖 JAVA 环境，故需要预先安装好 JDK，具体步骤可以参考：[Linux 环境下 JDK 安装](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Linux下JDK安装.md)
+Flink 的运行依赖 JAVA 环境，故需要预先安装好 JDK，具体步骤可以参考：[Linux 环境下 JDK 安装](./Linux下JDK安装.md)
 
 **2. 下载 & 解压 & 运行**
 
@@ -49,7 +49,7 @@ bin/start-cluster.sh
 
 Flink 提供了 WEB 界面用于直观的管理 Flink 集群，访问端口为 `8081`：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-dashboard.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-dashboard.png"/> </div>
 
 
 
@@ -83,13 +83,13 @@ a a b b c c c a e
 
 可以通过 WEB UI 的控制台查看作业统运行情况：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-socket-wordcount.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-socket-wordcount.png"/> </div>
 
 
 
 也可以通过 WEB 控制台查看到统计结果：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-socket-wordcount-stdout.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-socket-wordcount-stdout.png"/> </div>
 
 
 
@@ -160,7 +160,7 @@ bin/start-cluster.sh
 
 此时控制台输出如下：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-start-cluster-shell.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-start-cluster-shell.png"/> </div>
 
 
 
@@ -188,8 +188,8 @@ bin/start-cluster.sh
 
 另外在高可用模式下，还需要使用分布式文件系统来持久化存储 JobManager 的元数据，最常用的就是 HDFS，所以 Hadoop 也需要预先安装。关于 Hadoop 集群和 ZooKeeper 集群的搭建可以参考：
 
-+ [Hadoop 集群环境搭建](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Hadoop集群环境搭建.md)
-+ [Zookeeper 单机环境和集群环境搭建](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Zookeeper单机环境和集群环境搭建.md) 
++ [Hadoop 集群环境搭建](./Hadoop集群环境搭建.md)
++ [Zookeeper 单机环境和集群环境搭建](./Zookeeper单机环境和集群环境搭建.md) 
 
 ### 4.2 搭建步骤
 
@@ -223,13 +223,13 @@ bin/start-cluster.sh
 
 此时输出如下：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-standalone-cluster-ha.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-standalone-cluster-ha.png"/> </div>
 
 
 
 可以看到集群已经以 HA 的模式启动，此时还需要在各个节点上使用 `jps` 命令来查看进程是否启动成功，正常情况如下：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-standalone-cluster-jps.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-standalone-cluster-jps.png"/> </div>
 
 
 
@@ -255,7 +255,7 @@ the classpath/dependencies.
 
 可以看到是因为在 classpath 目录下找不到 Hadoop 的相关依赖，此时需要检查是否在环境变量中配置了 Hadoop 的安装路径，如果路径已经配置但仍然存在上面的问题，可以从 [Flink 官网](https://flink.apache.org/downloads.html)下载对应版本的 Hadoop 组件包：
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/flink-optional-components.png"/> </div>
+<div align="center"> <img src="../../pictures/flink-optional-components.png"/> </div>
 
 
 
@@ -269,5 +269,3 @@ the classpath/dependencies.
 + [JobManager High Availability (HA)](https://ci.apache.org/projects/flink/flink-docs-release-1.9/ops/jobmanager_high_availability.html)
 
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

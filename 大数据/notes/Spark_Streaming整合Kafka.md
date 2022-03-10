@@ -55,7 +55,7 @@ Spark 针对 Kafka 的不同版本，提供了两套整合方案：`spark-stream
 </dependencies>
 ```
 
-> 完整源码见本仓库：[spark-streaming-kafka](https://github.com/heibaiying/BigData-Notes/tree/master/code/spark/spark-streaming-kafka)
+> 完整源码见本仓库：[spark-streaming-kafka](../code/spark/spark-streaming-kafka)
 
 ## 三、整合Kafka
 
@@ -256,7 +256,7 @@ def SubscribePattern[K, V](
 + `commitSync`:  用于异步提交；
 + `commitAsync`：用于同步提交。
 
-具体提交方式可以参见：[Kafka 消费者详解](https://github.com/heibaiying/BigData-Notes/blob/master/notes/Kafka 消费者详解.md)
+具体提交方式可以参见：[Kafka 消费者详解](../notes/Kafka 消费者详解.md)
 
 
 
@@ -310,7 +310,7 @@ bin/kafka-console-producer.sh --broker-list hadoop001:9092 --topic spark-streami
 
 从控制台输出中可以看到数据流已经被成功接收，由于采用 `kafka-console-producer.sh` 发送的数据默认是没有 key 的，所以 key 值为 null。同时从输出中也可以看到在程序中指定的 `groupId` 和程序自动分配的 `clientId`。
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/spark-straming-kafka-console.png"/> </div>
+<div align="center"> <img  src="../pictures/spark-straming-kafka-console.png"/> </div>
 
 
 
@@ -320,5 +320,3 @@ bin/kafka-console-producer.sh --broker-list hadoop001:9092 --topic spark-streami
 
 1. https://spark.apache.org/docs/latest/streaming-kafka-0-10-integration.html
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

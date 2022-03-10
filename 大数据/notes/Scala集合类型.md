@@ -44,19 +44,19 @@ res0: scala.collection.immutable.Set[Int] = Set(5, 1, 2, 3, 4)
 
 scala.collection 包中所有集合如下图：
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/scala-collection.png"/> </div>
+<div align="center"> <img  src="../pictures/scala-collection.png"/> </div>
 
 ### 3.2 scala.collection.mutable
 
 scala.collection.mutable 包中所有集合如下图：
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/scala-collection-m.png"/> </div>
+<div align="center"> <img  src="../pictures/scala-collection-m.png"/> </div>
 
 ### 3.2 scala.collection.immutable
 
 scala.collection.immutable 包中所有集合如下图：
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/scala-collection-imm.png"/> </div>
+<div align="center"> <img  src="../pictures/scala-collection-imm.png"/> </div>
 
 ## 三、Trait Traversable
 
@@ -258,5 +258,3 @@ res8: Boolean = false
 2. https://docs.scala-lang.org/overviews/collections/trait-traversable.html
 3. https://docs.scala-lang.org/overviews/collections/trait-iterable.html
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

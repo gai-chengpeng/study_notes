@@ -23,14 +23,14 @@
 
 使用 Spring+Mybatis 操作 Phoenix 和操作其他的关系型数据库（如 Mysql，Oracle）在配置上是基本相同的，下面会分别给出 Spring/Spring Boot 整合步骤，完整代码见本仓库：
 
-+ [Spring + Mybatis + Phoenix](https://github.com/heibaiying/BigData-Notes/tree/master/code/Phoenix/spring-mybatis-phoenix)
-+ [SpringBoot + Mybatis + Phoenix](https://github.com/heibaiying/BigData-Notes/tree/master/code/Phoenix/spring-boot-mybatis-phoenix)
++ [Spring + Mybatis + Phoenix](../code/Phoenix/spring-mybatis-phoenix)
++ [SpringBoot + Mybatis + Phoenix](../code/Phoenix/spring-boot-mybatis-phoenix)
 
 ## 二、Spring + Mybatis + Phoenix
 
 ### 2.1 项目结构
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/spring-mybatis-phoenix.png"/> </div>
+<div align="center"> <img  src="../pictures/spring-mybatis-phoenix.png"/> </div>
 
 ### 2.2 主要依赖
 
@@ -221,7 +221,7 @@ public class PopulationDaoTest {
 
 ### 3.1 项目结构
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/spring-boot-mybatis-phoenix.png"/> </div>
+<div align="center"> <img  src="../pictures/spring-boot-mybatis-phoenix.png"/> </div>
 
 ### 3.2 主要依赖
 
@@ -385,5 +385,3 @@ UPSERT INTO us_population VALUES('CA','San Jose',912332);
 ```
 
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

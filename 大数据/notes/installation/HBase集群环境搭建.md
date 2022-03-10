@@ -22,15 +22,15 @@
 
 这里搭建一个 3 节点的 HBase 集群，其中三台主机上均为 `Region Server`。同时为了保证高可用，除了在 hadoop001 上部署主 `Master` 服务外，还在 hadoop002 上部署备用的 `Master` 服务。Master 服务由 Zookeeper 集群进行协调管理，如果主 `Master` 不可用，则备用 `Master` 会成为新的主 `Master`。
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hbase集群规划.png"/> </div>
+<div align="center"> <img  src="../../pictures/hbase集群规划.png"/> </div>
 
 ## 二、前置条件
 
 HBase 的运行需要依赖 Hadoop 和 JDK(`HBase 2.0+` 对应 `JDK 1.8+`) 。同时为了保证高可用，这里我们不采用 HBase 内置的 Zookeeper 服务，而采用外置的 Zookeeper 集群。相关搭建步骤可以参阅：
 
-- [Linux 环境下 JDK 安装](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Linux下JDK安装.md)
-- [Zookeeper 单机环境和集群环境搭建](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Zookeeper单机环境和集群环境搭建.md)
-- [Hadoop 集群环境搭建](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Hadoop集群环境搭建.md)
+- [Linux 环境下 JDK 安装](./Linux下JDK安装.md)
+- [Zookeeper 单机环境和集群环境搭建](./Zookeeper单机环境和集群环境搭建.md)
+- [Hadoop 集群环境搭建](./Hadoop集群环境搭建.md)
 
 
 
@@ -190,14 +190,12 @@ start-hbase.sh
 
 访问 HBase 的 Web-UI 界面，这里我安装的 HBase 版本为 1.2，访问端口为 `60010`，如果你安装的是 2.0 以上的版本，则访问端口号为 `16010`。可以看到 `Master` 在 hadoop001 上，三个 `Regin Servers` 分别在 hadoop001，hadoop002，和 hadoop003 上，并且还有一个 `Backup Matser` 服务在 hadoop002 上。
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hbase-集群搭建1.png"/> </div>
+<div align="center"> <img  src="../../pictures/hbase-集群搭建1.png"/> </div>
 <br/>
 
 hadoop002 上的 HBase 出于备用状态：
 
 <br/>
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hbase-集群搭建2.png"/> </div>
+<div align="center"> <img  src="../../pictures/hbase-集群搭建2.png"/> </div>
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

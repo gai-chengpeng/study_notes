@@ -12,7 +12,7 @@
 
 HBase 需要依赖 JDK 环境，同时 HBase 2.0+ 以上版本不再支持 JDK 1.7 ，需要安装 JDK 1.8+ 。JDK 安装方式见本仓库：
 
-> [Linux 环境下 JDK 安装](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Linux下JDK安装.md)
+> [Linux 环境下 JDK 安装](./Linux下JDK安装.md)
 
 ### 1.2 Standalone模式和伪集群模式的区别
 
@@ -106,7 +106,7 @@ export JAVA_HOME=/usr/java/jdk1.8.0_201
 
 验证方式二 ：访问 HBaseWeb UI 页面，默认端口为 `16010` 。
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hbase-web-ui.png"/> </div>
+<div align="center"> <img src="../../pictures/hbase-web-ui.png"/> </div>
 
 
 ## 三、伪集群模式安装（Pseudo-Distributed）
@@ -115,7 +115,7 @@ export JAVA_HOME=/usr/java/jdk1.8.0_201
 
 这里我们采用 HDFS 作为 HBase 的存储方案，需要预先安装 Hadoop。Hadoop 的安装方式单独整理至：
 
-> [Hadoop 单机伪集群搭建](https://github.com/heibaiying/BigData-Notes/blob/master/notes/installation/Hadoop单机版本环境搭建.md)
+> [Hadoop 单机伪集群搭建](./Hadoop单机版本环境搭建.md)
 
 ### 3.2 Hbase版本选择
 
@@ -224,7 +224,5 @@ hadoop001
 
 验证方式二 ：访问 HBase Web UI 界面，需要注意的是 1.2 版本的 HBase 的访问端口为 `60010`
 
-<div align="center"> <img src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hbase-60010.png"/> </div>
+<div align="center"> <img src="../../pictures/hbase-60010.png"/> </div>
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

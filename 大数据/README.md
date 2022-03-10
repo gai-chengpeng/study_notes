@@ -2,7 +2,7 @@
 
 
 
-<div align="center"> <img width="444px" src="../BigData-Notes/pictures/bigdata-notes-icon.png"/> </div>
+<div align="center"> <img width="444px" src="../大数据/pictures/bigdata-notes-icon.png"/> </div>
 <br/>
 
 **大数据入门指南**
@@ -11,18 +11,18 @@
 
 <table>
     <tr>
-      <th><img width="50px" src="../BigData-Notes/pictures/hadoop.jpg"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/hive.jpg"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/spark.jpg"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/storm.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/flink.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/hbase.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/kafka.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/zookeeper.jpg"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/flume.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/sqoop.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/azkaban.png"></th>
-      <th><img width="50px" src="../BigData-Notes/pictures/scala.jpg"></th>
+      <th><img width="50px" src="../大数据/pictures/hadoop.jpg"></th>
+      <th><img width="50px" src="../大数据/pictures/hive.jpg"></th>
+      <th><img width="50px" src="../大数据/pictures/spark.jpg"></th>
+      <th><img width="50px" src="../大数据/pictures/storm.png"></th>
+      <th><img width="50px" src="../大数据/pictures/flink.png"></th>
+      <th><img width="50px" src="../大数据/pictures/hbase.png"></th>
+      <th><img width="50px" src="../大数据/pictures/kafka.png"></th>
+      <th><img width="50px" src="../大数据/pictures/zookeeper.jpg"></th>
+      <th><img width="50px" src="../大数据/pictures/flume.png"></th>
+      <th><img width="50px" src="../大数据/pictures/sqoop.png"></th>
+      <th><img width="50px" src="../大数据/pictures/azkaban.png"></th>
+      <th><img width="50px" src="../大数据/pictures/scala.jpg"></th>
     </tr>
     <tr>
       <td align="center"><a href="#一hadoop">Hadoop</a></td>

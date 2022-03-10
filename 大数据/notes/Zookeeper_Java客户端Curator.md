@@ -50,7 +50,7 @@ Curator 是 Netflix 公司开源的一个 Zookeeper 客户端，目前由 Apache
 </dependencies>
 ```
 
-> 完整源码见本仓库： https://github.com/heibaiying/BigData-Notes/tree/master/code/Zookeeper/curator
+> 完整源码见本仓库： ../code/Zookeeper/curator
 
 
 
@@ -91,7 +91,7 @@ public class BasicOperation {
 
 在连接 Zookeeper 时，Curator 提供了多种重试策略以满足各种需求，所有重试策略均继承自 `RetryPolicy` 接口，如下图：
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/curator-retry-policy.png"/> </div>
+<div align="center"> <img  src="../pictures/curator-retry-policy.png"/> </div>
 
 这些重试策略类主要分为以下两类：
 
@@ -335,5 +335,3 @@ public void permanentChildrenNodesWatch() throws Exception {
 }
 ```
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>

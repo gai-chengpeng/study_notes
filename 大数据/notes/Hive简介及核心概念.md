@@ -29,7 +29,7 @@ Hive 是一个构建在 Hadoop 之上的数据仓库，它可以将结构化的�
 
 ## 二、Hive的体系架构
 
-<div align="center"> <img width="600px" src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hive体系架构.png"/> </div>
+<div align="center"> <img width="600px" src="../pictures/hive体系架构.png"/> </div>
 
 ### 2.1 command-line shell & thrift/jdbc
 
@@ -84,7 +84,7 @@ Hive 表中的列支持以下基本数据类型：
 
 Hive 中基本数据类型遵循以下的层次结构，按照这个层次结构，子类型到祖先类型允许隐式转换。例如 INT 类型的数据允许隐式转换为 BIGINT 类型。额外注意的是：按照类型层次结构允许将 STRING 类型隐式转换为 DOUBLE 类型。
 
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/hive-data-type.png"/> </div>
+<div align="center"> <img  src="../pictures/hive-data-type.png"/> </div>
 
 
 
@@ -201,5 +201,3 @@ CREATE TABLE page_view(viewTime INT, userid BIGINT)
 4. [LanguageManual Types](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Types)
 5. [Managed vs. External Tables](https://cwiki.apache.org/confluence/display/Hive/Managed+vs.+External+Tables)
 
-
-<div align="center"> <img  src="https://gitee.com/heibaiying/BigData-Notes/raw/master/pictures/weixin-desc.png"/> </div>
