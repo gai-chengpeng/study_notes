@@ -2,7 +2,7 @@
 
 
 
-<div align="center"> <img width="444px" src="../大数据/pictures/bigdata-notes-icon.png"/> </div>
+<div align="center"> <img width="444px" src="../大数据学习/pictures/bigdata-notes-icon.png"/> </div>
 <br/>
 
 **大数据入门指南**
@@ -11,18 +11,18 @@
 
 <table>
     <tr>
-      <th><img width="50px" src="../大数据/pictures/hadoop.jpg"></th>
-      <th><img width="50px" src="../大数据/pictures/hive.jpg"></th>
-      <th><img width="50px" src="../大数据/pictures/spark.jpg"></th>
-      <th><img width="50px" src="../大数据/pictures/storm.png"></th>
-      <th><img width="50px" src="../大数据/pictures/flink.png"></th>
-      <th><img width="50px" src="../大数据/pictures/hbase.png"></th>
-      <th><img width="50px" src="../大数据/pictures/kafka.png"></th>
-      <th><img width="50px" src="../大数据/pictures/zookeeper.jpg"></th>
-      <th><img width="50px" src="../大数据/pictures/flume.png"></th>
-      <th><img width="50px" src="../大数据/pictures/sqoop.png"></th>
-      <th><img width="50px" src="../大数据/pictures/azkaban.png"></th>
-      <th><img width="50px" src="../大数据/pictures/scala.jpg"></th>
+      <th><img width="50px" src="../大数据学习/pictures/hadoop.jpg"></th>
+      <th><img width="50px" src="../大数据学习/pictures/hive.jpg"></th>
+      <th><img width="50px" src="../大数据学习/pictures/spark.jpg"></th>
+      <th><img width="50px" src="../大数据学习/pictures/storm.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/flink.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/hbase.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/kafka.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/zookeeper.jpg"></th>
+      <th><img width="50px" src="../大数据学习/pictures/flume.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/sqoop.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/azkaban.png"></th>
+      <th><img width="50px" src="../大数据学习/pictures/scala.jpg"></th>
     </tr>
     <tr>
       <td align="center"><a href="#一hadoop">Hadoop</a></td>
