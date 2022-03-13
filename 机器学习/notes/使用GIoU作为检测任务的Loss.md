@@ -4,14 +4,14 @@
 
 IoU是检测任务中最常用的指标，由于IoU是比值的概念，对目标物体的scale是不敏感的。然而检测任务中的BBox的回归损失(MSE loss, I1-smooth loss等）优化和IoU优化不是完全等价的（见下图）。而且$L_n$范数对物体的scale也比较敏感。这篇论文提出可以直接把IoU设为回归的loss。然而有个问题是IoU无法直接优化没有重叠的部分。为了解决这个问题这篇paper提出了GIoU的思想~
 
-<div align="center"> <img  src="../pictures/IoU与L2范数的优化不是等效的.png"/>  IoU与L2范数的优化不是等效的 </div>
+<div align="center"> <img  src="../pictures/IoU与L2范数的优化不是等效的.png"/>  <p>IoU与L2范数的优化不是等效的</p> </div>
 
 要将IoU设计为损失，主要需要解决两个问题：
 
 1. 预测值和Ground truth没有重叠的话，IoU始终为0且无法优化
 2. IoU无法辨别不同方式的对齐，比如方向不一致等。
 
-<div align="center"> <img  src="../pictures/IoU无法代表overlap的方式.jpg"/>  IoU无法代表overlap的方式 </div>
+<div align="center"> <img  src="../pictures/IoU无法代表overlap的方式.jpg"/>  <p>IoU无法代表overlap的方式</p> </div>
 
 # GIoU
 
@@ -55,12 +55,11 @@ $$A^c = (x_2^c-x_1^c) *(y_2^c-y_1^c) \\$$
 8. 计算最终的损失：$L_{GIoU} = 1 - GIoU$
 
 作者做了一系列的实验（针对分割任务和分类任务有一定loss的调整设计，不过论文中没有详细给出）结果是IoU loss可以轻微提升使用MSE作为loss的表现，而GIoU的提升幅度更大，这个结论在YOLO算法和faster R-CNN系列上都是成立的：
-<div align="center"> <img  src="../pictures/PASCAL_VOC_2007上的提升.png"/> PASCAL VOC 2007上的提升with Yolo </div>
+<div align="center"> <img  src="../pictures/PASCAL_VOC_2007上的提升.png"/> <p>PASCAL VOC 2007上的提升with Yolo</p> </div>
 
-<div align="center"> <img  src="../pictures/MS_COCO的提升.jpg"/>  MS COCO的提升with Yolo
- </div>
+<div align="center"> <img  src="../pictures/MS_COCO的提升.jpg"/>  <p>MS COCO的提升with Yolo</p> </div>
 
- <div align="center"> <img  src="../pictures/PASCAL_VOC_2007_with_faster-RCNN.png"/> PASCAL VOC 2007 with faster-RCNN </div>
+ <div align="center"> <img  src="../pictures/PASCAL_VOC_2007_with_faster-RCNN.png"/> <p>PASCAL VOC 2007 with faster-RCNN</p> </div>
 
 # 实际运行
 在人脸检测中使用了GIoU替代原始损失，发现改进效果不大，分析原因可能是人脸检测中Anchor box的比例一般变动不大（1.5:1)，而不是像多目标检测一样存在anchor box比例分布不均衡的情况。
