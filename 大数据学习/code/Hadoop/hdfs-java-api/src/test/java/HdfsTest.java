@@ -65,7 +65,7 @@ public class HdfsTest {
      */
     @Test
     public void create() throws Exception {
-        // 如果文件存在，默认会覆盖, 可以通过第二个参数进行控制。第三个参数可以控制使用缓冲区的大小
+        // 如果文件存在,默认会覆盖, 可以通过第二个参数进行控制.第三个参数可以控制使用缓冲区的大小
         FSDataOutputStream out = fileSystem.create(new Path("/hdfs-api/test/a.txt"),
                 true, 4096);
         out.write("hello hadoop!".getBytes());
@@ -118,7 +118,7 @@ public class HdfsTest {
         /*
          *  第二个参数代表是否递归删除
          *    +  如果path是一个目录且递归删除为true, 则删除该目录及其中所有文件;
-         *    +  如果path是一个目录但递归删除为false,则会则抛出异常。
+         *    +  如果path是一个目录但递归删除为false,则会则抛出异常.
          */
         boolean result = fileSystem.delete(new Path("/hdfs-api/test/b.txt"), true);
         System.out.println(result);
@@ -130,7 +130,7 @@ public class HdfsTest {
      */
     @Test
     public void copyFromLocalFile() throws Exception {
-        // 如果指定的是目录，则会把目录及其中的文件都复制到指定目录下
+        // 如果指定的是目录,则会把目录及其中的文件都复制到指定目录下
         Path src = new Path("D:\\BigData-Notes\\notes\\installation");
         Path dst = new Path("/hdfs-api/test/");
         fileSystem.copyFromLocalFile(src, dst);
@@ -153,7 +153,7 @@ public class HdfsTest {
                     public void progress() {
                         fileCount++;
                         // progress方法每上传大约64KB的数据后就会被调用一次
-                        System.out.println("文件上传总进度：" + (fileCount * 64 * 1024 / fileSize) * 100 + " %");
+                        System.out.println("文件上传总进度:" + (fileCount * 64 * 1024 / fileSize) * 100 + " %");
                     }
                 });
 
@@ -186,7 +186,7 @@ public class HdfsTest {
     public void listFiles() throws Exception {
         FileStatus[] statuses = fileSystem.listStatus(new Path("/hdfs-api"));
         for (FileStatus fileStatus : statuses) {
-            //fileStatus的toString方法被重写过，直接打印可以看到所有信息
+            //fileStatus的toString方法被重写过,直接打印可以看到所有信息
             System.out.println(fileStatus.toString());
         }
     }

@@ -92,7 +92,7 @@
 4. [Spark SQL 常用聚合函数](notes/SparkSQL常用聚合函数.md)
 5. [Spark SQL JOIN 操作](notes/SparkSQL联结操作.md)
 
-**Spark Streaming ：**
+**Spark Streaming :**
 
 1. [Spark Streaming 简介](notes/Spark_Streaming与流处理.md)
 2. [Spark Streaming 基本操作](notes/Spark_Streaming基本操作.md)

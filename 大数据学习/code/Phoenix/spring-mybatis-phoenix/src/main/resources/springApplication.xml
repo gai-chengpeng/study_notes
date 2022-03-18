@@ -27,7 +27,7 @@
     </bean>
 
     <!--扫描注册接口 -->
-    <!--作用:从接口的基础包开始递归搜索，并将它们注册为 MapperFactoryBean(只有至少一种方法的接口才会被注册;, 具体类将被忽略)-->
+    <!--作用:从接口的基础包开始递归搜索,并将它们注册为 MapperFactoryBean(只有至少一种方法的接口才会被注册;, 具体类将被忽略)-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--指定会话工厂 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>

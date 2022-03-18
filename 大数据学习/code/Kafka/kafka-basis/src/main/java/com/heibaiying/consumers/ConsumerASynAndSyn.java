@@ -40,7 +40,7 @@ public class ConsumerASynAndSyn {
             e.printStackTrace();
         } finally {
             try {
-                // 因为即将要关闭消费者，所以要用同步提交保证提交成功
+                // 因为即将要关闭消费者,所以要用同步提交保证提交成功
                 consumer.commitSync();
             } finally {
                 consumer.close();

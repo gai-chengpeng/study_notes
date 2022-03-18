@@ -37,7 +37,7 @@ public class BasicOperation {
         client = CuratorFrameworkFactory.builder()
                 .connectString(zkServerPath)
                 .sessionTimeoutMs(10000).retryPolicy(retryPolicy)
-                .namespace("workspace").build();  //指定命名空间后，client的所有路径操作都会以/workspace开头
+                .namespace("workspace").build();  //指定命名空间后,client的所有路径操作都会以/workspace开头
         client.start();
     }
 
@@ -94,7 +94,7 @@ public class BasicOperation {
     @Test
     public void updateNode() throws Exception {
         byte[] newData = "defg".getBytes();
-        client.setData().withVersion(0)     // 传入版本号，如果版本号错误则拒绝更新操作,并抛出BadVersion异常
+        client.setData().withVersion(0)     // 传入版本号,如果版本号错误则拒绝更新操作,并抛出BadVersion异常
                 .forPath(nodePath, newData);
     }
 
@@ -105,9 +105,9 @@ public class BasicOperation {
     @Test
     public void deleteNodes() throws Exception {
         client.delete()
-                .guaranteed()                // 如果删除失败，那么在会继续执行，直到成功
-                .deletingChildrenIfNeeded()  // 如果有子节点，则递归删除
-                .withVersion(0)              // 传入版本号，如果版本号错误则拒绝删除操作,并抛出BadVersion异常
+                .guaranteed()                // 如果删除失败,那么在会继续执行,直到成功
+                .deletingChildrenIfNeeded()  // 如果有子节点,则递归删除
+                .withVersion(0)              // 传入版本号,如果版本号错误则拒绝删除操作,并抛出BadVersion异常
                 .forPath(nodePath);
     }
 
@@ -124,7 +124,7 @@ public class BasicOperation {
 
 
     /**
-     * 使用usingWatcher注册的监听是一次性的,即监听只会触发一次，监听完毕后就销毁
+     * 使用usingWatcher注册的监听是一次性的,即监听只会触发一次,监听完毕后就销毁
      */
     @Test
     public void DisposableWatch() throws Exception {
@@ -142,7 +142,7 @@ public class BasicOperation {
      */
     @Test
     public void permanentWatch() throws Exception {
-        // 使用NodeCache包装节点，对其注册的监听作用于节点，且是永久性的
+        // 使用NodeCache包装节点,对其注册的监听作用于节点,且是永久性的
         NodeCache nodeCache = new NodeCache(client, nodePath);
         // 通常设置为true, 代表创建nodeCache时,就去获取对应节点的值并缓存
         nodeCache.start(true);
@@ -150,8 +150,8 @@ public class BasicOperation {
             public void nodeChanged() {
                 ChildData currentData = nodeCache.getCurrentData();
                 if (currentData != null) {
-                    System.out.println("节点路径：" + currentData.getPath() +
-                            "数据：" + new String(currentData.getData()));
+                    System.out.println("节点路径:" + currentData.getPath() +
+                            "数据:" + new String(currentData.getData()));
                 }
             }
         });
@@ -165,7 +165,7 @@ public class BasicOperation {
     @Test
     public void permanentChildrenNodesWatch() throws Exception {
 
-        // 第三个参数代表除了节点状态外，是否还缓存节点内容
+        // 第三个参数代表除了节点状态外,是否还缓存节点内容
         PathChildrenCache childrenCache = new PathChildrenCache(client, "/hadoop", true);
         /*
          * StartMode代表初始化方式:
@@ -176,7 +176,7 @@ public class BasicOperation {
         childrenCache.start(StartMode.POST_INITIALIZED_EVENT);
 
         List<ChildData> childDataList = childrenCache.getCurrentData();
-        System.out.println("当前数据节点的子节点列表：");
+        System.out.println("当前数据节点的子节点列表:");
         childDataList.forEach(x -> System.out.println(x.getPath()));
 
         childrenCache.getListenable().addListener(new PathChildrenCacheListener() {
@@ -187,7 +187,7 @@ public class BasicOperation {
                         System.out.println("childrenCache初始化完成");
                         break;
                     case CHILD_ADDED:
-                        // 需要注意的是: 即使是之前已经存在的子节点，也会触发该监听，因为会把该子节点加入childrenCache缓存中
+                        // 需要注意的是: 即使是之前已经存在的子节点,也会触发该监听,因为会把该子节点加入childrenCache缓存中
                         System.out.println("增加子节点:" + event.getData().getPath());
                         break;
                     case CHILD_REMOVED:

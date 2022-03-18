@@ -6,7 +6,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#21-FileSystem">2.1 FileSystem</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#22-创建目录">2.2 创建目录</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#23-创建指定权限的目录">2.3 创建指定权限的目录</a><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#24-创建文件并写入内容">2.4 创建文件，并写入内容</a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#24-创建文件并写入内容">2.4 创建文件,并写入内容</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#25-判断文件是否存在">2.5 判断文件是否存在</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#26-查看文件内容">2.6 查看文件内容</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#27-文件重命名">2.7 文件重命名</a><br/>
@@ -21,7 +21,7 @@
 
 ## 一、 简介
 
-想要使用 HDFS API，需要导入依赖 `hadoop-client`。如果是 CDH 版本的 Hadoop，还需要额外指明其仓库地址：
+想要使用 HDFS API,需要导入依赖 `hadoop-client`.如果是 CDH 版本的 Hadoop,还需要额外指明其仓库地址:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -75,7 +75,7 @@
 
 ### 2.1 FileSystem
 
-FileSystem 是所有 HDFS 操作的主入口。由于之后的每个单元测试都需要用到它，这里使用 `@Before` 注解进行标注。
+FileSystem 是所有 HDFS 操作的主入口.由于之后的每个单元测试都需要用到它,这里使用 `@Before` 注解进行标注.
 
 ```java
 private static final String HDFS_PATH = "hdfs://192.168.0.106:8020";
@@ -109,7 +109,7 @@ public void destroy() {
 
 ### 2.2 创建目录
 
-支持递归创建目录：
+支持递归创建目录:
 
 ```java
 @Test
@@ -122,7 +122,7 @@ public void mkDir() throws Exception {
 
 ### 2.3 创建指定权限的目录
 
-`FsPermission(FsAction u, FsAction g, FsAction o)` 的三个参数分别对应：创建者权限，同组其他用户权限，其他用户权限，权限值定义在 `FsAction` 枚举类中。
+`FsPermission(FsAction u, FsAction g, FsAction o)` 的三个参数分别对应:创建者权限,同组其他用户权限,其他用户权限,权限值定义在 `FsAction` 枚举类中.
 
 ```java
 @Test
@@ -134,12 +134,12 @@ public void mkDirWithPermission() throws Exception {
 
 
 
-### 2.4 创建文件，并写入内容
+### 2.4 创建文件,并写入内容
 
 ```java
 @Test
 public void create() throws Exception {
-    // 如果文件存在，默认会覆盖, 可以通过第二个参数进行控制。第三个参数可以控制使用缓冲区的大小
+    // 如果文件存在,默认会覆盖, 可以通过第二个参数进行控制.第三个参数可以控制使用缓冲区的大小
     FSDataOutputStream out = fileSystem.create(new Path("/hdfs-api/test/a.txt"),
                                                true, 4096);
     out.write("hello hadoop!".getBytes());
@@ -167,7 +167,7 @@ public void exist() throws Exception {
 
 ### 2.6 查看文件内容
 
-查看小文本文件的内容，直接转换成字符串后输出：
+查看小文本文件的内容,直接转换成字符串后输出:
 
 ```java
 @Test
@@ -178,7 +178,7 @@ public void readToString() throws Exception {
 }
 ```
 
-`inputStreamToString` 是一个自定义方法，代码如下：
+`inputStreamToString` 是一个自定义方法,代码如下:
 
 ```java
 /**
@@ -229,7 +229,7 @@ public void delete() throws Exception {
     /*
      *  第二个参数代表是否递归删除
      *    +  如果 path 是一个目录且递归删除为 true, 则删除该目录及其中所有文件;
-     *    +  如果 path 是一个目录但递归删除为 false,则会则抛出异常。
+     *    +  如果 path 是一个目录但递归删除为 false,则会则抛出异常.
      */
     boolean result = fileSystem.delete(new Path("/hdfs-api/test/b.txt"), true);
     System.out.println(result);
@@ -243,7 +243,7 @@ public void delete() throws Exception {
 ```java
 @Test
 public void copyFromLocalFile() throws Exception {
-    // 如果指定的是目录，则会把目录及其中的文件都复制到指定目录下
+    // 如果指定的是目录,则会把目录及其中的文件都复制到指定目录下
     Path src = new Path("D:\\BigData-Notes\\notes\\installation");
     Path dst = new Path("/hdfs-api/test/");
     fileSystem.copyFromLocalFile(src, dst);
@@ -269,7 +269,7 @@ public void copyFromLocalFile() throws Exception {
                   public void progress() {
                      fileCount++;
                      // progress 方法每上传大约 64KB 的数据后就会被调用一次
-                     System.out.println("上传进度：" + (fileCount * 64 * 1024 / fileSize) * 100 + " %");
+                     System.out.println("上传进度:" + (fileCount * 64 * 1024 / fileSize) * 100 + " %");
                    }
                 });
 
@@ -306,13 +306,13 @@ public void copyToLocalFile() throws Exception {
 public void listFiles() throws Exception {
     FileStatus[] statuses = fileSystem.listStatus(new Path("/hdfs-api"));
     for (FileStatus fileStatus : statuses) {
-        //fileStatus 的 toString 方法被重写过，直接打印可以看到所有信息
+        //fileStatus 的 toString 方法被重写过,直接打印可以看到所有信息
         System.out.println(fileStatus.toString());
     }
 }
 ```
 
-`FileStatus` 中包含了文件的基本信息，比如文件路径，是否是文件夹，修改时间，访问时间，所有者，所属组，文件权限，是否是符号链接等，输出内容示例如下：
+`FileStatus` 中包含了文件的基本信息,比如文件路径,是否是文件夹,修改时间,访问时间,所有者,所属组,文件权限,是否是符号链接等,输出内容示例如下:
 
 ```properties
 FileStatus{
@@ -341,7 +341,7 @@ public void listFilesRecursive() throws Exception {
 }
 ```
 
-和上面输出类似，只是多了文本大小，副本系数，块大小信息。
+和上面输出类似,只是多了文本大小,副本系数,块大小信息.
 
 ```properties
 LocatedFileStatus{
@@ -373,17 +373,17 @@ public void getFileBlockLocations() throws Exception {
 }
 ```
 
-块输出信息有三个值，分别是文件的起始偏移量 (offset)，文件大小 (length)，块所在的主机名 (hosts)。
+块输出信息有三个值,分别是文件的起始偏移量 (offset),文件大小 (length),块所在的主机名 (hosts).
 
 ```
 0,57028557,hadoop001
 ```
 
-这里我上传的文件只有 57M(小于 128M)，且程序中设置了副本系数为 1，所有只有一个块信息。
+这里我上传的文件只有 57M(小于 128M),且程序中设置了副本系数为 1,所有只有一个块信息.
 
 <br/>
 
 <br/>
 
-**以上所有测试用例下载地址**：[HDFS Java API](../code/Hadoop/hdfs-java-api)
+**以上所有测试用例下载地址**:[HDFS Java API](../code/Hadoop/hdfs-java-api)
 

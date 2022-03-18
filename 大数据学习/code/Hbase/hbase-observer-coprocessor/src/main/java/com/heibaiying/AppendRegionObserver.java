@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 对相同的article:content执行put命令时，将新插入的内容添加到原有内容的末尾
+ * 对相同的article:content执行put命令时,将新插入的内容添加到原有内容的末尾
  */
 public class AppendRegionObserver extends BaseRegionObserver {
 
@@ -27,7 +27,7 @@ public class AppendRegionObserver extends BaseRegionObserver {
     public void prePut(ObserverContext<RegionCoprocessorEnvironment> e, Put put, WALEdit edit,
                        Durability durability) throws IOException {
         if (put.has(columnFamily, qualifier)) {
-            // 遍历查询结果，获取指定列的原值
+            // 遍历查询结果,获取指定列的原值
             Result rs = e.getEnvironment().getRegion().get(new Get(put.getRow()));
             String oldValue = "";
             for (Cell cell : rs.rawCells())

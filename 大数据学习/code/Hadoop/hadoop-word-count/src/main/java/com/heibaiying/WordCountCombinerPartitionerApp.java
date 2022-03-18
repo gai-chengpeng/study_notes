@@ -21,7 +21,7 @@ import java.net.URI;
 public class WordCountCombinerPartitionerApp {
 
 
-    // 这里为了直观显示参数 使用了硬编码的形式，实际开发中可以通过外部传参
+    // 这里为了直观显示参数 使用了硬编码的形式,实际开发中可以通过外部传参
     private static final String HDFS_URL = "hdfs://192.168.0.107:8020";
     private static final String HADOOP_USER_NAME = "root";
 
@@ -34,7 +34,7 @@ public class WordCountCombinerPartitionerApp {
             return;
         }
 
-        // 需要指明hadoop用户名，否则在HDFS上创建目录时可能会抛出权限不足的异常
+        // 需要指明hadoop用户名,否则在HDFS上创建目录时可能会抛出权限不足的异常
         System.setProperty("HADOOP_USER_NAME", HADOOP_USER_NAME);
 
 
@@ -70,7 +70,7 @@ public class WordCountCombinerPartitionerApp {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        // 如果输出目录已经存在，则必须先删除，否则重复运行程序时会抛出异常
+        // 如果输出目录已经存在,则必须先删除,否则重复运行程序时会抛出异常
         FileSystem fileSystem = FileSystem.get(new URI(HDFS_URL), configuration, HADOOP_USER_NAME);
         Path outputPath = new Path(args[1]);
         if (fileSystem.exists(outputPath)) {
@@ -82,7 +82,7 @@ public class WordCountCombinerPartitionerApp {
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, outputPath);
 
-        // 将作业提交到群集并等待它完成，参数设置为true代表打印显示对应的进度
+        // 将作业提交到群集并等待它完成,参数设置为true代表打印显示对应的进度
         boolean result = job.waitForCompletion(true);
 
         // 关闭之前创建的fileSystem

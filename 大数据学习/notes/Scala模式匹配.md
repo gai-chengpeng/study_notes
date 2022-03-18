@@ -13,15 +13,15 @@
 
 ## 一、模式匹配
 
-Scala 支持模式匹配机制，可以代替 swith 语句、执行类型检查、以及支持析构表达式等。
+Scala 支持模式匹配机制,可以代替 swith 语句、执行类型检查、以及支持析构表达式等.
 
 ### 1.1 更好的swith
 
-Scala 不支持 swith，可以使用模式匹配 `match...case` 语法代替。但是 match 语句与 Java 中的 switch 有以下三点不同：
+Scala 不支持 swith,可以使用模式匹配 `match...case` 语法代替.但是 match 语句与 Java 中的 switch 有以下三点不同:
 
 - Scala 中的 case 语句支持任何类型；而 Java 中 case 语句仅支持整型、枚举和字符串常量；
-- Scala 中每个分支语句后面不需要写 break，因为在 case 语句中 break 是隐含的，默认就有；
-- 在 Scala 中 match 语句是有返回值的，而 Java 中 switch 语句是没有返回值的。如下：
+- Scala 中每个分支语句后面不需要写 break,因为在 case 语句中 break 是隐含的,默认就有；
+- 在 Scala 中 match 语句是有返回值的,而 Java 中 switch 语句是没有返回值的.如下:
 
 ```scala
 object ScalaApp extends App {
@@ -60,7 +60,7 @@ object ScalaApp extends App {
 
 ### 1.3 匹配数据结构
 
-匹配元组示例：
+匹配元组示例:
 
 ```scala
 object ScalaApp extends App {
@@ -77,7 +77,7 @@ object ScalaApp extends App {
 }
 ```
 
-匹配数组示例：
+匹配数组示例:
 
 ```scala
 object ScalaApp extends App {
@@ -98,18 +98,18 @@ object ScalaApp extends App {
 
 ### 1.4 提取器
 
-数组、列表和元组能使用模式匹配，都是依靠提取器 (extractor) 机制，它们伴生对象中定义了 `unapply` 或 `unapplySeq` 方法：
+数组、列表和元组能使用模式匹配,都是依靠提取器 (extractor) 机制,它们伴生对象中定义了 `unapply` 或 `unapplySeq` 方法:
 
-+ **unapply**：用于提取固定数量的对象；
-+ **unapplySeq**：用于提取一个序列；
++ **unapply**:用于提取固定数量的对象；
++ **unapplySeq**:用于提取一个序列；
 
-这里以数组为例，`Array.scala` 定义了 `unapplySeq` 方法：
+这里以数组为例,`Array.scala` 定义了 `unapplySeq` 方法:
 
 ```scala
 def unapplySeq[T](x : scala.Array[T]) : scala.Option[scala.IndexedSeq[T]] = { /* compiled code */ }
 ```
 
-`unapplySeq` 返回一个序列，包含数组中的所有值，这样在模式匹配时，才能知道对应位置上的值。
+`unapplySeq` 返回一个序列,包含数组中的所有值,这样在模式匹配时,才能知道对应位置上的值.
 
 
 
@@ -117,7 +117,7 @@ def unapplySeq[T](x : scala.Array[T]) : scala.Option[scala.IndexedSeq[T]] = { /*
 
 ### 2.1 样例类
 
-样例类是一种的特殊的类，它们被经过优化以用于模式匹配，样例类的声明比较简单，只需要在 `class` 前面加上关键字 `case`。下面给出一个样例类及其用于模式匹配的示例：
+样例类是一种的特殊的类,它们被经过优化以用于模式匹配,样例类的声明比较简单,只需要在 `class` 前面加上关键字 `case`.下面给出一个样例类及其用于模式匹配的示例:
 
 ```scala
 //声明一个抽象类
@@ -134,18 +134,18 @@ case class Employee(name: String, age: Int, salary: Double) extends Person {}
 case class Student(name: String, age: Int) extends Person {}
 ```
 
-当你声明样例类后，编译器自动进行以下配置：
+当你声明样例类后,编译器自动进行以下配置:
 
 - 构造器中每个参数都默认为 `val`；
 - 自动地生成 `equals, hashCode, toString, copy` 等方法；
-- 伴生对象中自动生成 `apply` 方法，使得可以不用 new 关键字就能构造出相应的对象；
-- 伴生对象中自动生成 `unapply` 方法，以支持模式匹配。
+- 伴生对象中自动生成 `apply` 方法,使得可以不用 new 关键字就能构造出相应的对象；
+- 伴生对象中自动生成 `unapply` 方法,以支持模式匹配.
 
-除了上面的特征外，样例类和其他类相同，可以任意添加方法和字段，扩展它们。
+除了上面的特征外,样例类和其他类相同,可以任意添加方法和字段,扩展它们.
 
 ### 2.3 用于模式匹配
 
-样例的伴生对象中自动生成 `unapply` 方法，所以样例类可以支持模式匹配，使用如下：
+样例的伴生对象中自动生成 `unapply` 方法,所以样例类可以支持模式匹配,使用如下:
 
 ```scala
 object ScalaApp extends App {

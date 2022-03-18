@@ -27,22 +27,22 @@ public class ThresholdWarning extends RichFlatMapFunction<Tuple2<String, Long>, 
 
     @Override
     public void open(Configuration parameters) {
-        // 通过状态名称(句柄)获取状态实例，如果不存在则会自动创建
+        // 通过状态名称(句柄)获取状态实例,如果不存在则会自动创建
         abnormalData = getRuntimeContext().getListState(new ListStateDescriptor<>("abnormalData", Long.class));
     }
 
     @Override
     public void flatMap(Tuple2<String, Long> value, Collector<Tuple2<String, List<Long>>> out) throws Exception {
         Long inputValue = value.f1;
-        // 如果输入值超过阈值，则记录该次不正常的数据信息
+        // 如果输入值超过阈值,则记录该次不正常的数据信息
         if (inputValue >= threshold) {
             abnormalData.add(inputValue);
         }
         ArrayList<Long> list = Lists.newArrayList(abnormalData.get().iterator());
-        // 如果不正常的数据出现达到一定次数，则输出报警信息
+        // 如果不正常的数据出现达到一定次数,则输出报警信息
         if (list.size() >= numberOfTimes) {
             out.collect(Tuple2.of(value.f0 + " 超过指定阈值 ", list));
-            // 报警信息输出后，清空暂存的状态
+            // 报警信息输出后,清空暂存的状态
             abnormalData.clear();
         }
     }

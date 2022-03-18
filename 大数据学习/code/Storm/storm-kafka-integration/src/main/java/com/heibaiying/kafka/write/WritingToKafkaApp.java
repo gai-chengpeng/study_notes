@@ -29,15 +29,15 @@ public class WritingToKafkaApp {
         // 定义Kafka生产者属性
         Properties props = new Properties();
         /*
-         * 指定broker的地址清单，清单里不需要包含所有的broker地址，生产者会从给定的broker里查找其他broker的信息。
-         * 不过建议至少要提供两个broker的信息作为容错。
+         * 指定broker的地址清单,清单里不需要包含所有的broker地址,生产者会从给定的broker里查找其他broker的信息.
+         * 不过建议至少要提供两个broker的信息作为容错.
          */
         props.put("bootstrap.servers", BOOTSTRAP_SERVERS);
         /*
-         * acks 参数指定了必须要有多少个分区副本收到消息，生产者才会认为消息写入是成功的。
-         * acks=0 : 生产者在成功写入消息之前不会等待任何来自服务器的响应。
-         * acks=1 : 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
-         * acks=all : 只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。
+         * acks 参数指定了必须要有多少个分区副本收到消息,生产者才会认为消息写入是成功的.
+         * acks=0 : 生产者在成功写入消息之前不会等待任何来自服务器的响应.
+         * acks=1 : 只要集群的首领节点收到消息,生产者就会收到一个来自服务器成功响应.
+         * acks=all : 只有当所有参与复制的节点全部收到消息时,生产者才会收到一个来自服务器的成功响应.
          */
         props.put("acks", "1");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");

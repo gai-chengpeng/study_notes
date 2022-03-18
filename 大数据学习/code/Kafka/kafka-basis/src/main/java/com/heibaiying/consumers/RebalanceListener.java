@@ -24,7 +24,7 @@ public class RebalanceListener {
 
         consumer.subscribe(Collections.singletonList(topic), new ConsumerRebalanceListener() {
 
-            /*该方法会在消费者停止读取消息之后，再均衡开始之前就调用*/
+            /*该方法会在消费者停止读取消息之后,再均衡开始之前就调用*/
             @Override
             public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
                 System.out.println("再均衡即将触发");
@@ -32,7 +32,7 @@ public class RebalanceListener {
                 consumer.commitSync(offsets);
             }
 
-            /*该方法会在重新分配分区之后，消费者开始读取消息之前被调用*/
+            /*该方法会在重新分配分区之后,消费者开始读取消息之前被调用*/
             @Override
             public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
 
@@ -46,7 +46,7 @@ public class RebalanceListener {
                     System.out.println(record);
                     TopicPartition topicPartition = new TopicPartition(record.topic(), record.partition());
                     OffsetAndMetadata offsetAndMetadata = new OffsetAndMetadata(record.offset() + 1, "no metaData");
-                    /*TopicPartition重写过hashCode和equals方法，所以能够保证同一主题和分区的实例不会被重复添加*/
+                    /*TopicPartition重写过hashCode和equals方法,所以能够保证同一主题和分区的实例不会被重复添加*/
                     offsets.put(topicPartition, offsetAndMetadata);
                 }
                 consumer.commitAsync(offsets, null);

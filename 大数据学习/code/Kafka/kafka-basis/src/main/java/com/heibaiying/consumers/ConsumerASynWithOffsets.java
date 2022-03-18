@@ -41,7 +41,7 @@ public class ConsumerASynWithOffsets {
                     /*记录每个主题的每个分区的偏移量*/
                     TopicPartition topicPartition = new TopicPartition(record.topic(), record.partition());
                     OffsetAndMetadata offsetAndMetadata = new OffsetAndMetadata(record.offset()+1, "no metaData");
-                    /*TopicPartition重写过hashCode和equals方法，所以能够保证同一主题和分区的实例不会被重复添加*/
+                    /*TopicPartition重写过hashCode和equals方法,所以能够保证同一主题和分区的实例不会被重复添加*/
                     offsets.put(topicPartition, offsetAndMetadata);
                 }
                 /*提交特定偏移量*/

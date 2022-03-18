@@ -48,7 +48,7 @@ USE database_name;
 
 ### 1.3 新建数据库
 
-语法：
+语法:
 
 ```sql
 CREATE (DATABASE|SCHEMA) [IF NOT EXISTS] database_name   --DATABASE|SCHEMA 是等价的
@@ -57,7 +57,7 @@ CREATE (DATABASE|SCHEMA) [IF NOT EXISTS] database_name   --DATABASE|SCHEMA 是�
   [WITH DBPROPERTIES (property_name=property_value, ...)]; --指定额外属性
 ```
 
-示例：
+示例:
 
 ```sql
 CREATE DATABASE IF NOT EXISTS hive_test
@@ -69,13 +69,13 @@ CREATE DATABASE IF NOT EXISTS hive_test
 
 ### 1.4 查看数据库信息
 
-语法：
+语法:
 
 ```sql
 DESC DATABASE [EXTENDED] db_name; --EXTENDED 表示是否显示额外属性
 ```
 
-示例：
+示例:
 
 ```sql
 DESC DATABASE  EXTENDED hive_test;
@@ -85,15 +85,15 @@ DESC DATABASE  EXTENDED hive_test;
 
 ### 1.5 删除数据库
 
-语法：
+语法:
 
 ```sql
 DROP (DATABASE|SCHEMA) [IF EXISTS] database_name [RESTRICT|CASCADE];
 ```
 
-+ 默认行为是 RESTRICT，如果数据库中存在表则删除失败。要想删除库及其中的表，可以使用 CASCADE 级联删除。
++ 默认行为是 RESTRICT,如果数据库中存在表则删除失败.要想删除库及其中的表,可以使用 CASCADE 级联删除.
 
-示例：
+示例:
 
 ```sql
   DROP DATABASE IF EXISTS hive_test CASCADE;
@@ -159,7 +159,7 @@ CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name     --�
     LOCATION '/hive/emp_external';
 ```
 
-使用 `desc format  emp_external` 命令可以查看表的详细信息如下：
+使用 `desc format  emp_external` 命令可以查看表的详细信息如下:
 
 <div align="center"> <img width='700px' src="../pictures/hive-external-table.png"/> </div>
 
@@ -199,7 +199,7 @@ CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name     --�
 
 ### 2.6 倾斜表
 
-通过指定一个或者多个列经常出现的值（严重偏斜），Hive 会自动将涉及到这些值的数据拆分为单独的文件。在查询时，如果涉及到倾斜值，它就直接从独立文件中获取数据，而不是扫描所有文件，这使得性能得到提升。
+通过指定一个或者多个列经常出现的值（严重偏斜）,Hive 会自动将涉及到这些值的数据拆分为单独的文件.在查询时,如果涉及到倾斜值,它就直接从独立文件中获取数据,而不是扫描所有文件,这使得性能得到提升.
 
 ```sql
   CREATE EXTERNAL TABLE emp_skewed(
@@ -218,10 +218,10 @@ CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name     --�
 
 ### 2.7 临时表
 
-临时表仅对当前 session 可见，临时表的数据将存储在用户的暂存目录中，并在会话结束后删除。如果临时表与永久表表名相同，则对该表名的任何引用都将解析为临时表，而不是永久表。临时表还具有以下两个限制：
+临时表仅对当前 session 可见,临时表的数据将存储在用户的暂存目录中,并在会话结束后删除.如果临时表与永久表表名相同,则对该表名的任何引用都将解析为临时表,而不是永久表.临时表还具有以下两个限制:
 
 + 不支持分区列；
-+ 不支持创建索引。
++ 不支持创建索引.
 
 ```sql
   CREATE TEMPORARY TABLE emp_temp(
@@ -238,7 +238,7 @@ CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name     --�
 
 ### 2.8 CTAS创建表
 
-支持从查询语句的结果创建表：
+支持从查询语句的结果创建表:
 
 ```sql
 CREATE TABLE emp_copy AS SELECT * FROM emp WHERE deptno='20';
@@ -246,7 +246,7 @@ CREATE TABLE emp_copy AS SELECT * FROM emp WHERE deptno='20';
 
 ### 2.9 复制表结构
 
-语法：
+语法:
 
 ```sql
 CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name  --创建表表名
@@ -254,7 +254,7 @@ CREATE [TEMPORARY] [EXTERNAL] TABLE [IF NOT EXISTS] [db_name.]table_name  --创�
    [LOCATION hdfs_path]; --存储位置
 ```
 
-示例：
+示例:
 
 ```sql
 CREATE TEMPORARY EXTERNAL TABLE  IF NOT EXISTS  emp_co  LIKE emp
@@ -264,14 +264,14 @@ CREATE TEMPORARY EXTERNAL TABLE  IF NOT EXISTS  emp_co  LIKE emp
 
 ### 2.10 加载数据到表
 
-加载数据到表中属于 DML 操作，这里为了方便大家测试，先简单介绍一下加载本地数据到表中：
+加载数据到表中属于 DML 操作,这里为了方便大家测试,先简单介绍一下加载本地数据到表中:
 
 ```sql
 -- 加载数据到 emp 表中
 load data local inpath "/usr/file/emp.txt" into table emp;
 ```
 
-其中 emp.txt 的内容如下，你可以直接复制使用，也可以到本仓库的[resources](../resources) 目录下载：
+其中 emp.txt 的内容如下,你可以直接复制使用,也可以到本仓库的[resources](../resources) 目录下载:
 
 ```txt
 7369	SMITH	CLERK	7902	1980-12-17 00:00:00	800.00		20
@@ -290,7 +290,7 @@ load data local inpath "/usr/file/emp.txt" into table emp;
 7934	MILLER	CLERK	7782	1982-01-23 00:00:00	1300.00		10
 ```
 
-加载后可查询表中数据：
+加载后可查询表中数据:
 
 <div align="center"> <img width='700px' src="../pictures/hive-select-emp.png"/> </div>
 
@@ -300,13 +300,13 @@ load data local inpath "/usr/file/emp.txt" into table emp;
 
 ### 3.1 重命名表
 
-语法：
+语法:
 
 ```sql
 ALTER TABLE table_name RENAME TO new_table_name;
 ```
 
-示例：
+示例:
 
 ```sql
 ALTER TABLE emp_temp RENAME TO new_emp; --把 emp_temp 表重命名为 new_emp
@@ -316,14 +316,14 @@ ALTER TABLE emp_temp RENAME TO new_emp; --把 emp_temp 表重命名为 new_emp
 
 ### 3.2 修改列
 
-语法：
+语法:
 
 ```sql
 ALTER TABLE table_name [PARTITION partition_spec] CHANGE [COLUMN] col_old_name col_new_name column_type
   [COMMENT col_comment] [FIRST|AFTER column_name] [CASCADE|RESTRICT];
 ```
 
-示例：
+示例:
 
 ```sql
 -- 修改字段名和类型
@@ -340,7 +340,7 @@ ALTER TABLE emp_temp CHANGE mgr mgr_new INT COMMENT 'this is column mgr';
 
 ### 3.3 新增列
 
-示例：
+示例:
 
 ```sql
 ALTER TABLE emp_temp ADD COLUMNS (address STRING COMMENT 'home address');
@@ -352,16 +352,16 @@ ALTER TABLE emp_temp ADD COLUMNS (address STRING COMMENT 'home address');
 
 ### 4.1 清空表
 
-语法：
+语法:
 
 ```sql
 -- 清空整个表或表指定分区中的数据
 TRUNCATE TABLE table_name [PARTITION (partition_column = partition_col_value,  ...)];
 ```
 
-+ 目前只有内部表才能执行 TRUNCATE 操作，外部表执行时会抛出异常 `Cannot truncate non-managed table XXXX`。
++ 目前只有内部表才能执行 TRUNCATE 操作,外部表执行时会抛出异常 `Cannot truncate non-managed table XXXX`.
 
-示例：
+示例:
 
 ```sql
 TRUNCATE TABLE emp_mgt_ptn PARTITION (deptno=20);
@@ -371,15 +371,15 @@ TRUNCATE TABLE emp_mgt_ptn PARTITION (deptno=20);
 
 ### 4.2 删除表
 
-语法：
+语法:
 
 ```sql
 DROP TABLE [IF EXISTS] table_name [PURGE]; 
 ```
 
-+ 内部表：不仅会删除表的元数据，同时会删除 HDFS 上的数据；
-+ 外部表：只会删除表的元数据，不会删除 HDFS 上的数据；
-+ 删除视图引用的表时，不会给出警告（但视图已经无效了，必须由用户删除或重新创建）。
++ 内部表:不仅会删除表的元数据,同时会删除 HDFS 上的数据；
++ 外部表:只会删除表的元数据,不会删除 HDFS 上的数据；
++ 删除视图引用的表时,不会给出警告（但视图已经无效了,必须由用户删除或重新创建）.
 
 
 
@@ -387,13 +387,13 @@ DROP TABLE [IF EXISTS] table_name [PURGE];
 
 ### 5.1 Describe
 
-查看数据库：
+查看数据库:
 
 ```sql
 DESCRIBE|Desc DATABASE [EXTENDED] db_name;  --EXTENDED 是否显示额外属性
 ```
 
-查看表：
+查看表:
 
 ```sql
 DESCRIBE|Desc [EXTENDED|FORMATTED] table_name --FORMATTED 以友好的展现方式查看表详情
@@ -409,11 +409,11 @@ DESCRIBE|Desc [EXTENDED|FORMATTED] table_name --FORMATTED 以友好的展现方�
 -- 语法
 SHOW (DATABASES|SCHEMAS) [LIKE 'identifier_with_wildcards'];
 
--- 示例：
+-- 示例:
 SHOW DATABASES like 'hive*';
 ```
 
-LIKE 子句允许使用正则表达式进行过滤，但是 SHOW 语句当中的 LIKE 子句只支持 `*`（通配符）和 `|`（条件或）两个符号。例如 `employees`，`emp *`，`emp * | * ees`，所有这些都将匹配名为 `employees` 的数据库。
+LIKE 子句允许使用正则表达式进行过滤,但是 SHOW 语句当中的 LIKE 子句只支持 `*`（通配符）和 `|`（条件或）两个符号.例如 `employees`,`emp *`,`emp * | * ees`,所有这些都将匹配名为 `employees` 的数据库.
 
 **2. 查看表的列表**
 

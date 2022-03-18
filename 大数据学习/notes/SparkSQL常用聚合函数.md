@@ -31,12 +31,12 @@ import org.apache.spark.sql.functions._
 
 val spark = SparkSession.builder().appName("aggregations").master("local[2]").getOrCreate()
 val empDF = spark.read.json("/usr/file/json/emp.json")
-// 注册为临时视图，用于后面演示 SQL 查询
+// 注册为临时视图,用于后面演示 SQL 查询
 empDF.createOrReplaceTempView("emp")
 empDF.show()
 ```
 
-> 注：emp.json 可以从本仓库的[resources](../resources) 目录下载。
+> 注:emp.json 可以从本仓库的[resources](../resources) 目录下载.
 
 ### 1.2 count
 
@@ -54,7 +54,7 @@ empDF.select(countDistinct("deptno")).show()
 
 ### 1.4 approx_count_distinct 
 
-通常在使用大型数据集时，你可能关注的只是近似值而不是准确值，这时可以使用 approx_count_distinct 函数，并可以使用第二个参数指定最大允许误差。
+通常在使用大型数据集时,你可能关注的只是近似值而不是准确值,这时可以使用 approx_count_distinct 函数,并可以使用第二个参数指定最大允许误差.
 
 ```scala
 empDF.select(approx_count_distinct ("ename",0.1)).show()
@@ -62,7 +62,7 @@ empDF.select(approx_count_distinct ("ename",0.1)).show()
 
 ### 1.5 first & last 
 
-获取 DataFrame 中指定列的第一个值或者最后一个值。
+获取 DataFrame 中指定列的第一个值或者最后一个值.
 
 ```scala
 empDF.select(first("ename"),last("job")).show()
@@ -70,7 +70,7 @@ empDF.select(first("ename"),last("job")).show()
 
 ### 1.6 min & max
 
-获取 DataFrame 中指定列的最小值或者最大值。
+获取 DataFrame 中指定列的最小值或者最大值.
 
 ```scala
 empDF.select(min("sal"),max("sal")).show()
@@ -78,7 +78,7 @@ empDF.select(min("sal"),max("sal")).show()
 
 ### 1.7 sum & sumDistinct
 
-求和以及求指定列所有不相同的值的和。
+求和以及求指定列所有不相同的值的和.
 
 ```scala
 empDF.select(sum("sal")).show()
@@ -87,7 +87,7 @@ empDF.select(sumDistinct("sal")).show()
 
 ### 1.8 avg
 
-内置的求平均数的函数。
+内置的求平均数的函数.
 
 ```scala
 empDF.select(avg("sal")).show()
@@ -95,7 +95,7 @@ empDF.select(avg("sal")).show()
 
 ### 1.9 数学函数
 
-Spark SQL 中还支持多种数学聚合函数，用于通常的数学计算，以下是一些常用的例子：
+Spark SQL 中还支持多种数学聚合函数,用于通常的数学计算,以下是一些常用的例子:
 
 ```scala
 // 1.计算总体方差、均方差、总体标准差、样本标准差
@@ -104,7 +104,7 @@ empDF.select(var_pop("sal"), var_samp("sal"), stddev_pop("sal"), stddev_samp("sa
 // 2.计算偏度和峰度
 empDF.select(skewness("sal"), kurtosis("sal")).show()
 
-// 3. 计算两列的皮尔逊相关系数、样本协方差、总体协方差。(这里只是演示，员工编号和薪资两列实际上并没有什么关联关系)
+// 3. 计算两列的皮尔逊相关系数、样本协方差、总体协方差.(这里只是演示,员工编号和薪资两列实际上并没有什么关联关系)
 empDF.select(corr("empno", "sal"), covar_samp("empno", "sal"),covar_pop("empno", "sal")).show()
 ```
 
@@ -113,7 +113,7 @@ empDF.select(corr("empno", "sal"), covar_samp("empno", "sal"),covar_pop("empno",
 ```scala
 scala>  empDF.agg(collect_set("job"), collect_list("ename")).show()
 
-输出：
+输出:
 +--------------------+--------------------+
 |    collect_set(job)| collect_list(ename)|
 +--------------------+--------------------+
@@ -132,7 +132,7 @@ empDF.groupBy("deptno", "job").count().show()
 //等价 SQL
 spark.sql("SELECT deptno, job, count(*) FROM emp GROUP BY deptno, job").show()
 
-输出：
+输出:
 +------+---------+-----+
 |deptno|      job|count|
 +------+---------+-----+
@@ -157,7 +157,7 @@ empDF.groupBy("deptno").agg("ename"->"count","sal"->"sum").show()
 // 等价 SQL
 spark.sql("SELECT deptno, count(ename) ,sum(sal) FROM emp GROUP BY deptno").show()
 
-输出：
+输出:
 +------+----+------+
 |deptno|人数|总工资|
 +------+----+------+
@@ -171,12 +171,12 @@ spark.sql("SELECT deptno, count(ename) ,sum(sal) FROM emp GROUP BY deptno").show
 
 ## 三、自定义聚合函数
 
-Scala 提供了两种自定义聚合函数的方法，分别如下：
+Scala 提供了两种自定义聚合函数的方法,分别如下:
 
-- 有类型的自定义聚合函数，主要适用于 DataSet；
-- 无类型的自定义聚合函数，主要适用于 DataFrame。
+- 有类型的自定义聚合函数,主要适用于 DataSet；
+- 无类型的自定义聚合函数,主要适用于 DataFrame.
 
-以下分别使用两种方式来自定义一个求平均值的聚合函数，这里以计算员工平均工资为例。两种自定义方式分别如下：
+以下分别使用两种方式来自定义一个求平均值的聚合函数,这里以计算员工平均工资为例.两种自定义方式分别如下:
 
 ### 3.1 有类型的自定义函数
 
@@ -234,7 +234,7 @@ object SparkSqlApp {
         import spark.implicits._
         val ds = spark.read.json("file/emp.json").as[Emp]
 
-        // 10.使用内置 avg() 函数和自定义函数分别进行计算，验证自定义函数是否正确
+        // 10.使用内置 avg() 函数和自定义函数分别进行计算,验证自定义函数是否正确
         val myAvg = ds.select(MyAverage.toColumn.name("average_sal")).first()
         val avg = ds.select(functions.avg(ds.col("sal"))).first().get(0)
 
@@ -244,16 +244,16 @@ object SparkSqlApp {
 }
 ```
 
-自定义聚合函数需要实现的方法比较多，这里以绘图的方式来演示其执行流程，以及每个方法的作用：
+自定义聚合函数需要实现的方法比较多,这里以绘图的方式来演示其执行流程,以及每个方法的作用:
 
 <div align="center"> <img src="../pictures/spark-sql-自定义函数.png"/> </div>
 
 
 
-关于 `zero`,`reduce`,`merge`,`finish` 方法的作用在上图都有说明，这里解释一下中间类型和输出类型的编码转换，这个写法比较固定，基本上就是两种情况：
+关于 `zero`,`reduce`,`merge`,`finish` 方法的作用在上图都有说明,这里解释一下中间类型和输出类型的编码转换,这个写法比较固定,基本上就是两种情况:
 
 - 自定义类型 Case Class 或者元组就使用 `Encoders.product` 方法；
-- 基本类型就使用其对应名称的方法，如 `scalaByte `，`scalaFloat`，`scalaShort` 等，示例如下：
+- 基本类型就使用其对应名称的方法,如 `scalaByte `,`scalaFloat`,`scalaShort` 等,示例如下:
 
 ```scala
 override def bufferEncoder: Encoder[SumAndCount] = Encoders.product
@@ -264,7 +264,7 @@ override def outputEncoder: Encoder[Double] = Encoders.scalaDouble
 
 ### 3.2 无类型的自定义聚合函数
 
-理解了有类型的自定义聚合函数后，无类型的定义方式也基本相同，代码如下：
+理解了有类型的自定义聚合函数后,无类型的定义方式也基本相同,代码如下:
 
 ```scala
 import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}

@@ -54,7 +54,7 @@ public class AclOperation {
         Id user02 = new Id("digest", digest2);
         // 指定所有权限
         aclList.add(new ACL(Perms.ALL, user01));
-        // 如果想要指定权限的组合，中间需要使用 | ,这里的|代表的是位运算中的 按位或
+        // 如果想要指定权限的组合,中间需要使用 | ,这里的|代表的是位运算中的 按位或
         aclList.add(new ACL(Perms.DELETE | Perms.CREATE, user02));
 
         // 创建节点

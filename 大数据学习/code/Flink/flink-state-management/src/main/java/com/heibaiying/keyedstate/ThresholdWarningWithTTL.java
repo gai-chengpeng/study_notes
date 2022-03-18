@@ -29,9 +29,9 @@ public class ThresholdWarningWithTTL extends RichFlatMapFunction<Tuple2<String, 
         StateTtlConfig ttlConfig = StateTtlConfig
                 // 设置有效期为 10 秒
                 .newBuilder(Time.seconds(10))
-                // 设置有效期更新规则，这里设置为当创建和写入时，都重置其有效期到规定的10秒
+                // 设置有效期更新规则,这里设置为当创建和写入时,都重置其有效期到规定的10秒
                 .setUpdateType(StateTtlConfig.UpdateType.OnCreateAndWrite)
-                // 设置只要值过期就不可见，另外一个可选值是 ReturnExpiredIfNotCleanedUp，代表即使值过期了，但如果还没有被删除，就是可见的
+                // 设置只要值过期就不可见,另外一个可选值是 ReturnExpiredIfNotCleanedUp,代表即使值过期了,但如果还没有被删除,就是可见的
                 .setStateVisibility(StateTtlConfig.StateVisibility.NeverReturnExpired)
                 .build();
         ListStateDescriptor<Long> descriptor = new ListStateDescriptor<>("abnormalData", Long.class);

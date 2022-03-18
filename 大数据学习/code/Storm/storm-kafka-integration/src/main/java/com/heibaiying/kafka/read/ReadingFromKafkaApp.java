@@ -44,7 +44,7 @@ public class ReadingFromKafkaApp {
 
     private static KafkaSpoutConfig<String, String> getKafkaSpoutConfig(String bootstrapServers, String topic) {
         return KafkaSpoutConfig.builder(bootstrapServers, topic)
-                // 除了分组ID,以下配置都是可选的。分组ID必须指定,否则会抛出InvalidGroupIdException异常
+                // 除了分组ID,以下配置都是可选的.分组ID必须指定,否则会抛出InvalidGroupIdException异常
                 .setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafkaSpoutTestGroup")
                 // 定义重试策略
                 .setRetry(getRetryService())

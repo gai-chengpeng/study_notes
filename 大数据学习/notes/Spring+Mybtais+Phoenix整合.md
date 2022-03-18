@@ -16,12 +16,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#33-配置数据源">3.3 配置数据源</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#34-新建查询接口">3.4 新建查询接口</a><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#35-单元测试">3.5 单元测试</a><br/>
-<a href="#附建表语句">附：建表语句</a><br/>
+<a href="#附建表语句">附:建表语句</a><br/>
 </nav>
 
 ## 一、前言
 
-使用 Spring+Mybatis 操作 Phoenix 和操作其他的关系型数据库（如 Mysql，Oracle）在配置上是基本相同的，下面会分别给出 Spring/Spring Boot 整合步骤，完整代码见本仓库：
+使用 Spring+Mybatis 操作 Phoenix 和操作其他的关系型数据库（如 Mysql,Oracle）在配置上是基本相同的,下面会分别给出 Spring/Spring Boot 整合步骤,完整代码见本仓库:
 
 + [Spring + Mybatis + Phoenix](../code/Phoenix/spring-mybatis-phoenix)
 + [SpringBoot + Mybatis + Phoenix](../code/Phoenix/spring-boot-mybatis-phoenix)
@@ -34,7 +34,7 @@
 
 ### 2.2 主要依赖
 
-除了 Spring 相关依赖外，还需要导入 `phoenix-core` 和对应的 Mybatis 依赖包
+除了 Spring 相关依赖外,还需要导入 `phoenix-core` 和对应的 Mybatis 依赖包
 
 ```xml
 <!--mybatis 依赖包-->
@@ -99,7 +99,7 @@ phoenix.url=jdbc:phoenix:192.168.0.105:2181
     </bean>
 
     <!--扫描注册接口 -->
-    <!--作用:从接口的基础包开始递归搜索，并将它们注册为 MapperFactoryBean(只有至少一种方法的接口才会被注册;, 具体类将被忽略)-->
+    <!--作用:从接口的基础包开始递归搜索,并将它们注册为 MapperFactoryBean(只有至少一种方法的接口才会被注册;, 具体类将被忽略)-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--指定会话工厂 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
@@ -112,7 +112,7 @@ phoenix.url=jdbc:phoenix:192.168.0.105:2181
 
 ### 2.5 Mybtais参数配置
 
-新建 mybtais 配置文件，按照需求配置额外参数， 更多 settings 配置项可以参考[官方文档](http://www.mybatis.org/mybatis-3/zh/configuration.html)
+新建 mybtais 配置文件,按照需求配置额外参数, 更多 settings 配置项可以参考[官方文档](http://www.mybatis.org/mybatis-3/zh/configuration.html)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -242,7 +242,7 @@ public class PopulationDaoTest {
 <dependency>
 ```
 
-spring boot 与 mybatis 版本的对应关系：
+spring boot 与 mybatis 版本的对应关系:
 
 | MyBatis-Spring-Boot-Starter 版本 | MyBatis-Spring 版本 | Spring Boot 版本 |
 | -------------------------------- | ------------------- | ---------------- |
@@ -253,7 +253,7 @@ spring boot 与 mybatis 版本的对应关系：
 
 ### 3.3 配置数据源
 
-在 application.yml 中配置数据源，spring boot 2.x 版本默认采用 Hikari 作为数据库连接池，Hikari 是目前 java 平台性能最好的连接池，性能好于 druid。
+在 application.yml 中配置数据源,spring boot 2.x 版本默认采用 Hikari 作为数据库连接池,Hikari 是目前 java 平台性能最好的连接池,性能好于 druid.
 
 ```yaml
 spring:
@@ -268,17 +268,17 @@ spring:
     hikari:
       # 池中维护的最小空闲连接数
       minimum-idle: 10
-      # 池中最大连接数，包括闲置和使用中的连接
+      # 池中最大连接数,包括闲置和使用中的连接
       maximum-pool-size: 20
-      # 此属性控制从池返回的连接的默认自动提交行为。默认为 true
+      # 此属性控制从池返回的连接的默认自动提交行为.默认为 true
       auto-commit: true
       # 允许最长空闲时间
       idle-timeout: 30000
-      # 此属性表示连接池的用户定义名称，主要显示在日志记录和 JMX 管理控制台中，以标识池和池配置。 默认值：自动生成
+      # 此属性表示连接池的用户定义名称,主要显示在日志记录和 JMX 管理控制台中,以标识池和池配置. 默认值:自动生成
       pool-name: custom-hikari
-      #此属性控制池中连接的最长生命周期，值 0 表示无限生命周期，默认 1800000 即 30 分钟
+      #此属性控制池中连接的最长生命周期,值 0 表示无限生命周期,默认 1800000 即 30 分钟
       max-lifetime: 1800000
-      # 数据库连接超时时间,默认 30 秒，即 30000
+      # 数据库连接超时时间,默认 30 秒,即 30000
       connection-timeout: 30000
       # 连接测试 sql 这个地方需要根据数据库方言差异而配置 例如 oracle 就应该写成  select 1 from dual
       connection-test-query: SELECT 1
@@ -292,7 +292,7 @@ mybatis:
 
 ### 3.4 新建查询接口
 
-上面 Spring+Mybatis 我们使用了 XML 的方式来写 SQL，为了体现 Mybatis 支持多种方式，这里使用注解的方式来写 SQL。
+上面 Spring+Mybatis 我们使用了 XML 的方式来写 SQL,为了体现 Mybatis 支持多种方式,这里使用注解的方式来写 SQL.
 
 ```java
 @Mapper
@@ -361,9 +361,9 @@ public class PopulationTest {
 
 
 
-## 附：建表语句
+## 附:建表语句
 
-上面单元测试涉及到的测试表的建表语句如下：
+上面单元测试涉及到的测试表的建表语句如下:
 
 ```sql
 CREATE TABLE IF NOT EXISTS us_population (

@@ -32,7 +32,7 @@ val scores02 = Map("hadoop" -> 10, "spark" -> 20, "storm" -> 30)
 val scores03 = Map(("hadoop", 10), ("spark", 20), ("storm", 30))
 ```
 
-采用上面方式得到的都是不可变 Map(immutable map)，想要得到可变 Map(mutable map)，则需要使用：
+采用上面方式得到的都是不可变 Map(immutable map),想要得到可变 Map(mutable map),则需要使用:
 
 ```scala
 val scores04 = scala.collection.mutable.Map("hadoop" -> 10, "spark" -> 20, "storm" -> 30)
@@ -55,7 +55,7 @@ object ScalaApp extends App {
 
 ### 1.3 新增/修改/删除值
 
-可变 Map 允许进行新增、修改、删除等操作。
+可变 Map 允许进行新增、修改、删除等操作.
 
 ```scala
 object ScalaApp extends App {
@@ -84,7 +84,7 @@ object ScalaApp extends App {
 (hive,50)
 ```
 
-不可变 Map 不允许进行新增、修改、删除等操作，但是允许由不可变 Map 产生新的 Map。
+不可变 Map 不允许进行新增、修改、删除等操作,但是允许由不可变 Map 产生新的 Map.
 
 ```scala
 object ScalaApp extends App {
@@ -125,7 +125,7 @@ object ScalaApp extends App {
 
 ### 1.5 yield关键字
 
-可以使用 `yield` 关键字从现有 Map 产生新的 Map。
+可以使用 `yield` 关键字从现有 Map 产生新的 Map.
 
 ```scala
 object ScalaApp extends App {
@@ -155,7 +155,7 @@ object ScalaApp extends App {
 
 ### 1.6 其他Map结构
 
-在使用 Map 时候，如果不指定，默认使用的是 HashMap，如果想要使用 `TreeMap` 或者 `LinkedHashMap`，则需要显式的指定。
+在使用 Map 时候,如果不指定,默认使用的是 HashMap,如果想要使用 `TreeMap` 或者 `LinkedHashMap`,则需要显式的指定.
 
 ```scala
 object ScalaApp extends App {
@@ -222,7 +222,7 @@ object ScalaApp extends App {
 
 ## 二、元组(Tuple)
 
-元组与数组类似，但是数组中所有的元素必须是同一种类型，而元组则可以包含不同类型的元素。
+元组与数组类似,但是数组中所有的元素必须是同一种类型,而元组则可以包含不同类型的元素.
 
 ```scala
 scala> val tuple=(1,3.24f,"scala")
@@ -231,7 +231,7 @@ tuple: (Int, Float, String) = (1,3.24,scala)
 
 ### 2.1  模式匹配
 
-可以通过模式匹配来获取元组中的值并赋予对应的变量：
+可以通过模式匹配来获取元组中的值并赋予对应的变量:
 
 ```scala
 scala> val (a,b,c)=tuple
@@ -240,7 +240,7 @@ b: Float = 3.24
 c: String = scala
 ```
 
-如果某些位置不需要赋值，则可以使用下划线代替：
+如果某些位置不需要赋值,则可以使用下划线代替:
 
 ```scala
 scala> val (a,_,_)=tuple

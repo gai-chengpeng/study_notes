@@ -37,7 +37,7 @@ public class ThresholdWarning extends RichFlatMapFunction<Tuple2<String, Long>, 
         checkPointedState = context.getOperatorStateStore().getListState(new ListStateDescriptor<>("abnormalData",
                 TypeInformation.of(new TypeHint<Tuple2<String, Long>>() {
                 })));
-        // 如果发生重启，则需要从快照中将状态进行恢复
+        // 如果发生重启,则需要从快照中将状态进行恢复
         if (context.isRestored()) {
             for (Tuple2<String, Long> element : checkPointedState.get()) {
                 bufferedData.add(element);
@@ -62,7 +62,7 @@ public class ThresholdWarning extends RichFlatMapFunction<Tuple2<String, Long>, 
 
     @Override
     public void snapshotState(FunctionSnapshotContext context) throws Exception {
-        // 在进行快照时，将数据存储到checkPointedState
+        // 在进行快照时,将数据存储到checkPointedState
         checkPointedState.clear();
         for (Tuple2<String, Long> element : bufferedData) {
             checkPointedState.add(element);

@@ -9,12 +9,12 @@
 
 ## 一、整合说明
 
-Storm 官方对 Kafka 的整合分为两个版本，官方说明文档分别如下：
+Storm 官方对 Kafka 的整合分为两个版本,官方说明文档分别如下:
 
 + [Storm Kafka Integration](http://storm.apache.org/releases/2.0.0-SNAPSHOT/storm-kafka.html) : 主要是针对 0.8.x 版本的 Kafka 提供整合支持；
-+  [Storm Kafka Integration (0.10.x+)]() : 包含 Kafka 新版本的 consumer API，主要对 Kafka 0.10.x + 提供整合支持。
++  [Storm Kafka Integration (0.10.x+)]() : 包含 Kafka 新版本的 consumer API,主要对 Kafka 0.10.x + 提供整合支持.
 
-这里我服务端安装的 Kafka 版本为 2.2.0(Released Mar 22, 2019) ，按照官方 0.10.x+ 的整合文档进行整合，不适用于 0.8.x 版本的 Kafka。
+这里我服务端安装的 Kafka 版本为 2.2.0(Released Mar 22, 2019) ,按照官方 0.10.x+ 的整合文档进行整合,不适用于 0.8.x 版本的 Kafka.
 
 ## 二、写入数据到Kafka
 
@@ -93,7 +93,7 @@ public class DataSourceSpout extends BaseRichSpout {
 }
 ```
 
-产生的模拟数据格式如下：
+产生的模拟数据格式如下:
 
 ```properties
 Spark	HBase
@@ -126,15 +126,15 @@ public class WritingToKafkaApp {
         // 定义 Kafka 生产者属性
         Properties props = new Properties();
         /*
-         * 指定 broker 的地址清单，清单里不需要包含所有的 broker 地址，生产者会从给定的 broker 里查找其他 broker 的信息。
-         * 不过建议至少要提供两个 broker 的信息作为容错。
+         * 指定 broker 的地址清单,清单里不需要包含所有的 broker 地址,生产者会从给定的 broker 里查找其他 broker 的信息.
+         * 不过建议至少要提供两个 broker 的信息作为容错.
          */
         props.put("bootstrap.servers", BOOTSTRAP_SERVERS);
         /*
-         * acks 参数指定了必须要有多少个分区副本收到消息，生产者才会认为消息写入是成功的。
-         * acks=0 : 生产者在成功写入消息之前不会等待任何来自服务器的响应。
-         * acks=1 : 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
-         * acks=all : 只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。
+         * acks 参数指定了必须要有多少个分区副本收到消息,生产者才会认为消息写入是成功的.
+         * acks=0 : 生产者在成功写入消息之前不会等待任何来自服务器的响应.
+         * acks=1 : 只要集群的首领节点收到消息,生产者就会收到一个来自服务器成功响应.
+         * acks=all : 只有当所有参与复制的节点全部收到消息时,生产者才会收到一个来自服务器的成功响应.
          */
         props.put("acks", "1");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
@@ -166,11 +166,11 @@ public class WritingToKafkaApp {
 
 ### 2.5 测试准备工作
 
-进行测试前需要启动 Kakfa：
+进行测试前需要启动 Kakfa:
 
 #### 1. 启动Kakfa
 
-Kafka 的运行依赖于 zookeeper，需要预先启动，可以启动 Kafka 内置的 zookeeper,也可以启动自己安装的：
+Kafka 的运行依赖于 zookeeper,需要预先启动,可以启动 Kafka 内置的 zookeeper,也可以启动自己安装的:
 
 ```shell
 # zookeeper启动命令
@@ -180,7 +180,7 @@ bin/zkServer.sh start
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-启动单节点 kafka 用于测试：
+启动单节点 kafka 用于测试:
 
 ```shell
 # bin/kafka-server-start.sh config/server.properties
@@ -198,7 +198,7 @@ bin/kafka-topics.sh --create --bootstrap-server hadoop001:9092 --replication-fac
 
 #### 3. 启动消费者
 
- 启动一个消费者用于观察写入情况，启动命令如下：
+ 启动一个消费者用于观察写入情况,启动命令如下:
 
 ```shell
 # bin/kafka-console-consumer.sh --bootstrap-server hadoop001:9092 --topic storm-topic --from-beginning
@@ -206,13 +206,13 @@ bin/kafka-topics.sh --create --bootstrap-server hadoop001:9092 --replication-fac
 
 ### 2.6 测试
 
-可以用直接使用本地模式运行，也可以打包后提交到服务器集群运行。本仓库提供的源码默认采用 `maven-shade-plugin` 进行打包，打包命令如下：
+可以用直接使用本地模式运行,也可以打包后提交到服务器集群运行.本仓库提供的源码默认采用 `maven-shade-plugin` 进行打包,打包命令如下:
 
 ```shell
 # mvn clean package -D maven.test.skip=true
 ```
 
-启动后，消费者监听情况如下：
+启动后,消费者监听情况如下:
 
 <div align="center"> <img  src="../pictures/strom-kafka-consumer.png"/> </div>
 
@@ -257,7 +257,7 @@ public class ReadingFromKafkaApp {
 
     private static KafkaSpoutConfig<String, String> getKafkaSpoutConfig(String bootstrapServers, String topic) {
         return KafkaSpoutConfig.builder(bootstrapServers, topic)
-                // 除了分组 ID,以下配置都是可选的。分组 ID 必须指定,否则会抛出 InvalidGroupIdException 异常
+                // 除了分组 ID,以下配置都是可选的.分组 ID 必须指定,否则会抛出 InvalidGroupIdException 异常
                 .setProp(ConsumerConfig.GROUP_ID_CONFIG, "kafkaSpoutTestGroup")
                 // 定义重试策略
                 .setRetry(getRetryService())
@@ -309,11 +309,11 @@ public class LogConsoleBolt extends BaseRichBolt {
 }
 ```
 
-这里从 `value` 字段中获取 kafka 输出的值数据。
+这里从 `value` 字段中获取 kafka 输出的值数据.
 
-在开发中，我们可以通过继承 `RecordTranslator` 接口定义了 Kafka 中 Record 与输出流之间的映射关系，可以在构建 `KafkaSpoutConfig` 的时候通过构造器或者 `setRecordTranslator()` 方法传入，并最后传递给具体的 `KafkaSpout`。
+在开发中,我们可以通过继承 `RecordTranslator` 接口定义了 Kafka 中 Record 与输出流之间的映射关系,可以在构建 `KafkaSpoutConfig` 的时候通过构造器或者 `setRecordTranslator()` 方法传入,并最后传递给具体的 `KafkaSpout`.
 
-默认情况下使用内置的 `DefaultRecordTranslator`，其源码如下，`FIELDS` 中 定义了 tuple 中所有可用的字段：主题，分区，偏移量，消息键，值。
+默认情况下使用内置的 `DefaultRecordTranslator`,其源码如下,`FIELDS` 中 定义了 tuple 中所有可用的字段:主题,分区,偏移量,消息键,值.
 
 ```java
 public class DefaultRecordTranslator<K, V> implements RecordTranslator<K, V> {
@@ -342,7 +342,7 @@ public class DefaultRecordTranslator<K, V> implements RecordTranslator<K, V> {
 
 ### 3.4 启动测试
 
-这里启动一个生产者用于发送测试数据，启动命令如下：
+这里启动一个生产者用于发送测试数据,启动命令如下:
 
 ```shell
 # bin/kafka-console-producer.sh --broker-list hadoop001:9092 --topic storm-topic
@@ -350,7 +350,7 @@ public class DefaultRecordTranslator<K, V> implements RecordTranslator<K, V> {
 
 <div align="center"> <img  src="../pictures/storm-kafka-producer.png"/> </div>
 
-本地运行的项目接收到从 Kafka 发送过来的数据：
+本地运行的项目接收到从 Kafka 发送过来的数据:
 
 <div align="center"> <img  src="../pictures/storm-kafka-receiver.png"/> </div>
 
@@ -358,7 +358,7 @@ public class DefaultRecordTranslator<K, V> implements RecordTranslator<K, V> {
 
 <br>
 
-> 用例源码下载地址：[storm-kafka-integration](../code/Storm/storm-kafka-integration)
+> 用例源码下载地址:[storm-kafka-integration](../code/Storm/storm-kafka-integration)
 
 
 

@@ -11,21 +11,21 @@
 
 ## 一、定长数组
 
-在 Scala 中，如果你需要一个长度不变的数组，可以使用 Array。但需要注意以下两点：
+在 Scala 中,如果你需要一个长度不变的数组,可以使用 Array.但需要注意以下两点:
 
-- 在 Scala 中使用 `(index)` 而不是 `[index]` 来访问数组中的元素，因为访问元素，对于 Scala 来说是方法调用，`(index)` 相当于执行了 `.apply(index)` 方法。
-- Scala 中的数组与 Java 中的是等价的，`Array[Int]()` 在虚拟机层面就等价于 Java 的 `int[]`。
+- 在 Scala 中使用 `(index)` 而不是 `[index]` 来访问数组中的元素,因为访问元素,对于 Scala 来说是方法调用,`(index)` 相当于执行了 `.apply(index)` 方法.
+- Scala 中的数组与 Java 中的是等价的,`Array[Int]()` 在虚拟机层面就等价于 Java 的 `int[]`.
 
 ```scala
-// 10 个整数的数组，所有元素初始化为 0
+// 10 个整数的数组,所有元素初始化为 0
 scala> val nums=new Array[Int](10)
 nums: Array[Int] = Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-// 10 个元素的字符串数组，所有元素初始化为 null
+// 10 个元素的字符串数组,所有元素初始化为 null
 scala> val strings=new Array[String](10)
 strings: Array[String] = Array(null, null, null, null, null, null, null, null, null, null)
 
-// 使用指定值初始化，此时不需要 new 关键字
+// 使用指定值初始化,此时不需要 new 关键字
 scala> val a=Array("hello","scala")
 a: Array[String] = Array(hello, scala)
 
@@ -36,7 +36,7 @@ res3: String = hello
 
 ## 二、变长数组
 
-在 scala 中通过 ArrayBuffer 实现变长数组 (又称缓冲数组)。在构建 ArrayBuffer 时必须给出类型参数，但不必指定长度，因为 ArrayBuffer 会在需要的时候自动扩容和缩容。变长数组的构建方式及常用操作如下：
+在 scala 中通过 ArrayBuffer 实现变长数组 (又称缓冲数组).在构建 ArrayBuffer 时必须给出类型参数,但不必指定长度,因为 ArrayBuffer 会在需要的时候自动扩容和缩容.变长数组的构建方式及常用操作如下:
 
 ```java
 import scala.collection.mutable.ArrayBuffer
@@ -71,7 +71,7 @@ object ScalaApp {
 }
 ```
 
-需要注意的是：使用 `+= ` 在末尾插入元素是一个高效的操作，其时间复杂度是 O(1)。而使用 `insert` 随机插入元素的时间复杂度是 O(n)，因为在其插入位置之后的所有元素都要进行对应的后移，所以在 `ArrayBuffer` 中随机插入元素是一个低效的操作。
+需要注意的是:使用 `+= ` 在末尾插入元素是一个高效的操作,其时间复杂度是 O(1).而使用 `insert` 随机插入元素的时间复杂度是 O(n),因为在其插入位置之后的所有元素都要进行对应的后移,所以在 `ArrayBuffer` 中随机插入元素是一个低效的操作.
 
 ## 三、数组遍历
 
@@ -103,13 +103,13 @@ object ScalaApp extends App {
 }
 ```
 
-这里我们没有将代码写在 main 方法中，而是继承自 App.scala，这是 Scala 提供的一种简写方式，此时将代码写在类中，等价于写在 main 方法中，直接运行该类即可。
+这里我们没有将代码写在 main 方法中,而是继承自 App.scala,这是 Scala 提供的一种简写方式,此时将代码写在类中,等价于写在 main 方法中,直接运行该类即可.
 
 
 
 ## 四、数组转换
 
-数组转换是指由现有数组产生新的数组。假设当前拥有 a 数组，想把 a 中的偶数元素乘以 10 后产生一个新的数组，可以采用下面两种方式来实现：
+数组转换是指由现有数组产生新的数组.假设当前拥有 a 数组,想把 a 中的偶数元素乘以 10 后产生一个新的数组,可以采用下面两种方式来实现:
 
 ```scala
 object ScalaApp extends App {
@@ -122,7 +122,7 @@ object ScalaApp extends App {
     println(elem)
   }
 
-  // 2.方式二 采用函数式编程的方式,这和 Java 8 中的函数式编程是类似的，这里采用下划线标表示其中的每个元素
+  // 2.方式二 采用函数式编程的方式,这和 Java 8 中的函数式编程是类似的,这里采用下划线标表示其中的每个元素
   val ints2 = a.filter(_ % 2 == 0).map(_ * 10)
   for (elem <- ints1) {
     println(elem)
@@ -134,7 +134,7 @@ object ScalaApp extends App {
 
 ## 五、多维数组
 
-和 Java 中一样，多维数组由单维数组组成。
+和 Java 中一样,多维数组由单维数组组成.
 
 ```scala
 object ScalaApp extends App {
@@ -154,7 +154,7 @@ object ScalaApp extends App {
 
 }
 
-打印输出如下：
+打印输出如下:
 11-12-13-14-15-16-17-18-19-20-
 21-22-23-24-25-26-27-28-29-30-
 31-32-33-34-35-36-37-38-39-40-
@@ -164,7 +164,7 @@ object ScalaApp extends App {
 
 ## 六、与Java互操作
 
-由于 Scala 的数组是使用 Java 的数组来实现的，所以两者之间可以相互转换。
+由于 Scala 的数组是使用 Java 的数组来实现的,所以两者之间可以相互转换.
 
 ```scala
 import java.util

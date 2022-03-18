@@ -21,8 +21,8 @@ object KafkaDirectStream {
 
     val kafkaParams = Map[String, Object](
       /*
-       * 指定broker的地址清单，清单里不需要包含所有的broker地址，生产者会从给定的broker里查找其他broker的信息。
-       * 不过建议至少提供两个broker的信息作为容错。
+       * 指定broker的地址清单,清单里不需要包含所有的broker地址,生产者会从给定的broker里查找其他broker的信息.
+       * 不过建议至少提供两个broker的信息作为容错.
        */
       "bootstrap.servers" -> "hadoop001:9092",
       /*键的序列化器*/
@@ -33,8 +33,8 @@ object KafkaDirectStream {
       "group.id" -> "spark-streaming-group",
       /*
        * 该属性指定了消费者在读取一个没有偏移量的分区或者偏移量无效的情况下该作何处理:
-       * latest: 在偏移量无效的情况下，消费者将从最新的记录开始读取数据（在消费者启动之后生成的记录）
-       * earliest: 在偏移量无效的情况下，消费者将从起始位置读取分区的记录
+       * latest: 在偏移量无效的情况下,消费者将从最新的记录开始读取数据（在消费者启动之后生成的记录）
+       * earliest: 在偏移量无效的情况下,消费者将从起始位置读取分区的记录
        */
       "auto.offset.reset" -> "latest",
       /*是否自动提交*/

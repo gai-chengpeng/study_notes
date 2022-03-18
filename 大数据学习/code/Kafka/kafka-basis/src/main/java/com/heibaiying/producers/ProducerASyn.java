@@ -22,7 +22,7 @@ public class ProducerASyn {
 
         for (int i = 0; i < 10; i++) {
             ProducerRecord<String, String> record = new ProducerRecord<>(topicName, "k" + i, "world" + i);
-            /*异步发送消息，并监听回调*/
+            /*异步发送消息,并监听回调*/
             producer.send(record, new Callback() {
                 @Override
                 public void onCompletion(RecordMetadata metadata, Exception exception) {
